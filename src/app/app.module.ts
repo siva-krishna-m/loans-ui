@@ -1,16 +1,38 @@
+import { CustomersModule } from './customers/customers.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderComponent } from './header/header.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { FooterComponent } from './footer/footer.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { PageNotfoundComponent } from './page-notfound/page-notfound.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { StoreModule } from "@ngrx/store";
+import { counterReducer } from './state/reducers/counter.reducer';
+import { reducers } from './state/reducers';
 
 @NgModule({
   declarations: [
-    AppComponent
-  ],
+    AppComponent,
+      HeaderComponent,
+      SidebarComponent,
+      FooterComponent,
+      DashboardComponent,
+      PageNotfoundComponent
+   ],
   imports: [
+    CommonModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    CustomersModule,
+    StoreModule.forRoot(reducers)
   ],
   providers: [],
   bootstrap: [AppComponent]
