@@ -1,3 +1,4 @@
+import { AuthModule } from './auth/auth.module';
 import { CustomersModule } from './customers/customers.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,6 +16,7 @@ import { CommonModule } from '@angular/common';
 import { StoreModule } from "@ngrx/store";
 import { counterReducer } from './state/reducers/counter.reducer';
 import { reducers } from './state/reducers';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,9 @@ import { reducers } from './state/reducers';
     BrowserAnimationsModule,
     HttpClientModule,
     CustomersModule,
+    ReactiveFormsModule,
+    FormsModule,
+    AuthModule,
     StoreModule.forRoot(reducers)
   ],
   providers: [],

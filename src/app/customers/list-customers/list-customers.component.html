@@ -1,4 +1,4 @@
-<table id="example" class="table table-striped table-bordered" style="width:100%">
+<table id="example" class="table table-striped table-bordered" style="width:100%" *ngIf="(customersList$ | async) as customersList">
   <thead>
       <tr>
         <td>Id</td>
@@ -11,7 +11,7 @@
       </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of customersList">
+    <tr *ngFor="let item of customersList.results">
       <td> <a style="cursor: pointer;" [routerLink]="['view', item._id]"> {{ item._id }}</a> </td>
       <td> {{item.firstname}} </td>
       <td> {{item.lastname}} </td>

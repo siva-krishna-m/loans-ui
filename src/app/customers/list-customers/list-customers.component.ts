@@ -1,24 +1,20 @@
+import { Observable } from 'rxjs';
 import { CustomersService } from './../../services/customers.service';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-list-customers',
   templateUrl: './list-customers.component.html',
-  styleUrls: ['./list-customers.component.css']
+  styleUrls: ['./list-customers.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListCustomersComponent implements OnInit {
-  customersList: any;
+  customersList$: Observable<any> = this.customerService.customers$;
 
   constructor(private customerService: CustomersService) { }
 
   ngOnInit() {
-    this.getCustomerList();
   }
 
-  getCustomerList(){
-    this.customerService.getCustomers().subscribe((res: any) => {
-      this.customersList = res.results;
-    })
-  }
 
 }

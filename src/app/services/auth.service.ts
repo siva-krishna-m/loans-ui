@@ -1,14 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.dev';
+import { loginForm } from '../auth/models/user.model';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class CustomersService {
+@Injectable()
+export class AuthService {
 
-  customers$ = this.http.get(environment.CUSTOMER_BASE_URL+environment.CUSTOMER.GET_ALL_CUSTOMERS)
 constructor(private http: HttpClient) { }
 
+login(req: any){
+  return this.http.get(environment.USER_BASE_URL+environment.USER.ADD_USER, {...req})
+}
 
 }
